@@ -1,26 +1,35 @@
 package aplication;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		String[] lines = new String[] {"Good morning", "Goog afternoon", "Good night"};
-
-		String path = "D:\\temp\\in.txt";
+		Scanner sc = new Scanner(System.in);
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
-			for(String line : lines) {
-				bw.write(line);
-				bw.newLine();
-			}
+		System.out.println("Enter a folder path: ");
+		String strPath = sc.nextLine(); //escreverá o caminho do arquivo.
+		
+		File path = new File(strPath); //Uma váriavel do tipo "File" pode ser um caminho de um arquivo tanto como o caminho de uma pasta.
+		
+		File[] folders = path.listFiles(File::isDirectory); //Cria um vetor que recebe uma lista de diretórios,dentro da pasta escolhida.
+		System.out.println("FOLDERS:");
+		for (File folder : folders) {
+			System.out.println(folder);
 		}
-		catch(IOException e) {
-			System.out.println("Error: "+e.getMessage());
+		
+		File[] files = path.listFiles(File::isFile); //Cria um vetor, que organiza uma lista de diretórios,dentro da pasta escolhida.
+		System.out.println("FILES:");
+		for (File file: files) { 
+			System.out.println(file);
 		}
+		
+		//Para criar uma pasta dentro do diretório desejado:
+		//boolean success = new File(strPath + "\\subdir").mkdir();
+		
+		sc.close();
 	}
 
 }
