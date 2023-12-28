@@ -29,6 +29,15 @@ public class Program {
 		//Para criar uma pasta dentro do diretório desejado:
 		//boolean success = new File(strPath + "\\subdir").mkdir();
 		
+		//Para imprimir somente o nome do arquivo ou da pasta:
+		//System.out.println("getname: "+path.getName());
+		
+		//Para imprimir somente o caminho do arquivo ou pasta:
+		//System.out.println("getParent: "+path.getParent());
+		
+		//Para imprimir o caminho completo:
+		//System.out.println("getPath: "+ path.getPath());
+		
 		sc.close();
 	}
 
